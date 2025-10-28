@@ -129,12 +129,10 @@ const MovieDetails: React.FC = () => {
                       {currentMovie.runtime}
                     </div>
                   )}
-                  {currentMovie.originalLanguage && (
-                    <div className="flex items-center">
-                      <LanguageIcon className="h-4 w-4 mr-1" />
-                      {currentMovie.originalLanguage}
-                    </div>
-                  )}
+                  <div className="flex items-center">
+                    <LanguageIcon className="h-4 w-4 mr-1" />
+                    {currentMovie.originalLanguage || 'N/A'}
+                  </div>
                 </div>
               </div>
 
@@ -174,15 +172,13 @@ const MovieDetails: React.FC = () => {
             </div>
 
             {/* Rating */}
-            {currentMovie.averageRating && (
-              <div className="flex items-center mb-4">
-                <StarIcon className={`h-5 w-5 mr-1 ${getRatingColor(currentMovie.averageRating)}`} />
-                <span className={`text-lg font-semibold ${getRatingColor(currentMovie.averageRating)}`}>
-                  {currentMovie.averageRating.toFixed(1)}/10
-                </span>
-                <span className="text-gray-500 ml-2">Average Rating</span>
-              </div>
-            )}
+            <div className="flex items-center mb-4">
+              <StarIcon className={`h-5 w-5 mr-1 ${getRatingColor(currentMovie.averageRating)}`} />
+              <span className={`text-lg font-semibold ${getRatingColor(currentMovie.averageRating)}`}>
+                {currentMovie.averageRating ? `${currentMovie.averageRating.toFixed(1)}/10` : 'N/A'}
+              </span>
+              <span className="text-gray-500 ml-2">Average Rating</span>
+            </div>
 
             {/* Budget */}
             {currentMovie.budget && currentMovie.budget !== 'N/A' && (
